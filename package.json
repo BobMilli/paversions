@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "paversions REST API",
   "scripts": {
-    "start": "nodemon app.js",
+    "start": "node app.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "robert.milli@gmail.com",
@@ -14,6 +14,5 @@
     "puppeteer": "^10.4.0"
   },
   "devDependencies": {
-    "nodemon": "^2.0.14"
   }
 }
