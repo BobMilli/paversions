@@ -10,6 +10,7 @@
     <h1>Hello World !</h1>
     <h2>Automatic redirection ?</h2>
     <input type="button" onclick="goURL();" value="Click me" />
+    <input type="button" onclick="goURLPAVersions();" value="Go to PA Versions" />
     <script>
       function goURL() {
         const webURL = /^(?:https?:??:\/\/)?[^\/\?]+/gim.exec(
@@ -17,6 +18,14 @@
         )[0];
         console.log(webURL);
         location.replace(webURL + "/check");
+      }
+
+      function goURLPAVersions() {
+        const webURL = /^(?:https?:??:\/\/)?[^\/\?]+/gim.exec(
+          window.location.href
+        )[0];
+        console.log(webURL);
+        location.replace(webURL + "/paversions");
       }
     </script>
   </body>
