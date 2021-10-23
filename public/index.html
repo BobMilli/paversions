@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>PAVersions</title>
-</head>
-<body>
+  </head>
+  <body>
     <h1>Hello World !</h1>
     <h2>Automatic redirection ?</h2>
-</body>
+    <input type="button" onclick="goURL();" value="Click me" />
+    <script>
+      function goURL() {
+        const webURL = /^(?:https?:??:\/\/)?[^\/\?]+/gim.exec(
+          window.location.href
+        )[0];
+        console.log(webURL);
+        location.replace(webURL + "/check");
+      }
+    </script>
+  </body>
 </html>
