@@ -128,6 +128,32 @@ app.get('/check', (req, res) => {
         console.log(e)
       })
   })
+
+  // const paproducts = ['PAW', 'PAX', 'TM1','TM1Web']
+
+
+  app.get('/paversionsTM1', (req, res, next) => {
+    var promises = []
+    var paversions = []
+  
+    promises.push(GetPAVersions('TM1'))
+
+    Promise.all(promises)
+      .then(data => {
+        data.forEach(paproduct => {
+          paproduct.forEach(paproductversion => {
+            paversions.push(paproductversion)
+          })
+        })
+        res.status(200).json(paversions)
+        res.end()
+      })
+      .catch(e => {
+        console.log('An error occurs : ')
+        console.log(e)
+      })
+  })
+
   
 
 app.listen(port, () => {
