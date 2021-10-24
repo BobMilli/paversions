@@ -129,9 +129,6 @@ app.get('/check', (req, res) => {
       })
   })
 
-  // const paproducts = ['PAW', 'PAX', 'TM1','TM1Web']
-
-
   app.get('/paversionsTM1', (req, res, next) => {
     var promises = []
     var paversions = []
@@ -154,7 +151,75 @@ app.get('/check', (req, res) => {
       })
   })
 
+  // const paproducts = ['PAX', 'TM1Web']
+
+  app.get('/paversionsPAW', (req, res, next) => {
+    var promises = []
+    var paversions = []
   
+    promises.push(GetPAVersions('PAW'))
+
+    Promise.all(promises)
+      .then(data => {
+        data.forEach(paproduct => {
+          paproduct.forEach(paproductversion => {
+            paversions.push(paproductversion)
+          })
+        })
+        res.status(200).json(paversions)
+        res.end()
+      })
+      .catch(e => {
+        console.log('An error occurs : ')
+        console.log(e)
+      })
+  })
+  
+  // const paproducts = [ 'TM1Web']
+
+  app.get('/paversionsPAX', (req, res, next) => {
+    var promises = []
+    var paversions = []
+  
+    promises.push(GetPAVersions('PAX'))
+
+    Promise.all(promises)
+      .then(data => {
+        data.forEach(paproduct => {
+          paproduct.forEach(paproductversion => {
+            paversions.push(paproductversion)
+          })
+        })
+        res.status(200).json(paversions)
+        res.end()
+      })
+      .catch(e => {
+        console.log('An error occurs : ')
+        console.log(e)
+      })
+  })
+
+  app.get('/paversionsTM1Web', (req, res, next) => {
+    var promises = []
+    var paversions = []
+  
+    promises.push(GetPAVersions('TM1Web'))
+
+    Promise.all(promises)
+      .then(data => {
+        data.forEach(paproduct => {
+          paproduct.forEach(paproductversion => {
+            paversions.push(paproductversion)
+          })
+        })
+        res.status(200).json(paversions)
+        res.end()
+      })
+      .catch(e => {
+        console.log('An error occurs : ')
+        console.log(e)
+      })
+  })
 
 app.listen(port, () => {
     console.log(`Example app listening at http://localhost:${port}`)
