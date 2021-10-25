@@ -2,7 +2,7 @@
   <q-page class='q-pa-md'>
       <h4 class='no-padding no-margin'>Planning Analytics Versions</h4>
       <p>Directly from the IBM site, all the information about the latest versions of the Planning Analytics softwares.<br/>
-      Done by <b>robert.milli@gmail.com</b> using <a href="https://quasar.dev">quasar</a>.</p>
+      Done by <b>robert.milli@gmail.com</b> using <a href="https://quasar.dev">quasar</a>. Source available on my <a href="https://github.com/BobMilli/paversions"> paversions github repository</a> </p>
 
       <q-btn-group  class=" justify-center full-width" >
         <q-btn color="grey-2" text-color="black" glossy label="Planning Analytics Workspace" @click="OpenLink('PAW')" />
