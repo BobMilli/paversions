@@ -31,6 +31,33 @@ app.get('/check', (req, res) => {
     res.end()
   })
 
+function stringDateToDate(stringDate) {
+  // Convert to uppercase to ease the job
+  stringDate = stringDate.toUpperCase();
+  // Split the string date using regEx
+  let dateParts = stringDate.match(/(^\S*)\s(\d*),\s(\d*)/);
+  let sTextMonthPart  = dateParts[1];
+  let sDayPart  = dateParts[2];
+  let sYearPart  = dateParts[3];
+  // Convert string Month to number
+  monthsarray = [
+    "JANUARY",
+    "FEBRUARY",
+    "MARCH",
+    "APRIL",
+    "MAY",
+    "JUNE",
+    "JULY",
+    "AUGUST",
+    "SEPTEMBER",
+    "OCTOBER",
+    "NOVEMBER",
+    "DECEMBER"
+  ];
+  let sMonthPart =  (101 + monthsarray.indexOf(sTextMonthPart)).toString().substring(1,3);
+  // return a real Date 
+  return new Date(sYearPart + '-' + sMonthPart + '-' + sDayPart)
+}
 
   async function GetPAVersions (paproduct) {
     const browser = await puppeteer.launch({
@@ -95,7 +122,7 @@ app.get('/check', (req, res) => {
       try {
         if (extract !== undefined) {
           paversionnumber = extract[1]
-          paversiondate = extract[4]
+          paversiondate = stringDateToDate(extract[4])
         }
       } catch (error) {}
       return {
